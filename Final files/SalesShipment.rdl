@@ -11,7 +11,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-01-03T09:29:55.4887128Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-04T16:48:27.2509423Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -197,7 +197,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TrackingSpecBufferSerNo.Value</Value>
+                                  <Value>=Fields!SerialNo.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1679,6 +1679,9 @@ TIe8nlg5dj2HAHrXrJ/Zv8ITMJLiTVr6YDIkvdRlmb82Jrf0b4T6N4fC/YTPCFGB+9Jz9c0AYvwx+AXh
         </Field>
         <Field Name="CompanyInfoCountryCode">
           <DataField>CompanyInfoCountryCode</DataField>
+        </Field>
+        <Field Name="SerialNo">
+          <DataField>SerialNo</DataField>
         </Field>
       </Fields>
       <Query>
