@@ -11,7 +11,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-01-04T14:51:06.0287506Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-05T19:00:04.2205142Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -1184,11 +1184,7 @@
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Details">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!LineNo_Line.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
+                  <Group Name="Details" />
                 </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>Before</KeepWithGroup>
@@ -1390,7 +1386,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress3.Value, "DataSet_Result") &amp; ", " &amp; First(Fields!CustomerAddress2.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetCustomerAddress.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1420,7 +1416,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CompanyAddress1.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetCustomerName.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1450,7 +1446,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress4.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetCustomerCity.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1480,7 +1476,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress5.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetCustomerCountry.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1510,7 +1506,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!ShipToAddress1.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetShippingName.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1540,7 +1536,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!ShipToAddress3.Value, "DataSet_Result") &amp; ", " &amp; First(Fields!ShipToAddress2.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetShippingAddress.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1570,7 +1566,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!ShipToAddress4.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetShippingCity.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1600,7 +1596,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!ShipToAddress5.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetShippingCountry.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1662,7 +1658,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="+" &amp; First(Fields!ShipToPhoneNo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetShippingPhone.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2013,7 +2009,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress3.Value, "DataSet_Result") &amp; ", " &amp; First(Fields!CustomerAddress2.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetBillingAddress.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2043,7 +2039,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress1.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetBillingName.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2073,7 +2069,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress4.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetBillingCity.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -2103,7 +2099,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerAddress5.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!GetBillingCountry.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -3002,6 +2998,45 @@ TIe8nlg5dj2HAHrXrJ/Zv8ITMJLiTVr6YDIkvdRlmb82Jrf0b4T6N4fC/YTPCFGB+9Jz9c0AYvwx+AXh
         </Field>
         <Field Name="GetWorkDescription">
           <DataField>GetWorkDescription</DataField>
+        </Field>
+        <Field Name="GetCustomerName">
+          <DataField>GetCustomerName</DataField>
+        </Field>
+        <Field Name="GetCustomerAddress">
+          <DataField>GetCustomerAddress</DataField>
+        </Field>
+        <Field Name="GetCustomerCity">
+          <DataField>GetCustomerCity</DataField>
+        </Field>
+        <Field Name="GetCustomerCountry">
+          <DataField>GetCustomerCountry</DataField>
+        </Field>
+        <Field Name="GetShippingName">
+          <DataField>GetShippingName</DataField>
+        </Field>
+        <Field Name="GetShippingAddress">
+          <DataField>GetShippingAddress</DataField>
+        </Field>
+        <Field Name="GetShippingCity">
+          <DataField>GetShippingCity</DataField>
+        </Field>
+        <Field Name="GetShippingCountry">
+          <DataField>GetShippingCountry</DataField>
+        </Field>
+        <Field Name="GetShippingPhone">
+          <DataField>GetShippingPhone</DataField>
+        </Field>
+        <Field Name="GetBillingName">
+          <DataField>GetBillingName</DataField>
+        </Field>
+        <Field Name="GetBillingAddress">
+          <DataField>GetBillingAddress</DataField>
+        </Field>
+        <Field Name="GetBillingCity">
+          <DataField>GetBillingCity</DataField>
+        </Field>
+        <Field Name="GetBillingCountry">
+          <DataField>GetBillingCountry</DataField>
         </Field>
         <Field Name="TotalAmountDec">
           <DataField>TotalAmountDec</DataField>

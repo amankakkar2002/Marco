@@ -25,6 +25,58 @@ reportextension 50106 SalesOrderExt extends "Standard Sales - Order Conf."
             {
 
             }
+            column(GetCustomerName; GetCustomerName(Header))
+            {
+
+            }
+            column(GetCustomerAddress; GetCustomerAddress(Header))
+            {
+
+            }
+            column(GetCustomerCity; GetCustomerCity(Header))
+            {
+
+            }
+            column(GetCustomerCountry; GetCustomerCountry(Header))
+            {
+
+            }
+            column(GetShippingName; GetShippingName(Header))
+            {
+
+            }
+            column(GetShippingAddress; GetShippingAddress(Header))
+            {
+
+            }
+            column(GetShippingCity; GetShippingCity(Header))
+            {
+
+            }
+            column(GetShippingCountry; GetShippingCountry(Header))
+            {
+
+            }
+            column(GetShippingPhone; GetShippingPhone(Header))
+            {
+
+            }
+            column(GetBillingName; GetBillingName(Header))
+            {
+
+            }
+            column(GetBillingAddress; GetBillingAddress(Header))
+            {
+
+            }
+            column(GetBillingCity; GetBillingCity(Header))
+            {
+
+            }
+            column(GetBillingCountry; GetBillingCountry(Header))
+            {
+
+            }
         }
         add(Totals)
         {
@@ -71,6 +123,138 @@ reportextension 50106 SalesOrderExt extends "Standard Sales - Order Conf."
             OrganicMolecule.CalcFields("Organic Molecule");
             OrganicMolecule."Organic Molecule".CreateInStream(InStream, TextEncoding::UTF8);
             exit(TypeHelper.TryReadAsTextWithSepAndFieldErrMsg(InStream, TypeHelper.LFSeparator(), OrganicMolecule.FieldName("Organic Molecule")));
+        end;
+    end;
+
+    local procedure GetCustomerAddress(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+        Customer: Record Customer;
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            if Customer.Get(SalesHeader."Sell-to Customer No.") then
+                exit(Customer.Address + ', ' + Customer."Address 2");
+        end;
+    end;
+
+    local procedure GetCustomerName(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+        Customer: Record Customer;
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            if Customer.Get(SalesHeader."Sell-to Customer No.") then
+                exit(Customer.Name);
+        end;
+    end;
+
+    local procedure GetCustomerCity(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+        Customer: Record Customer;
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            if Customer.Get(SalesHeader."Sell-to Customer No.") then
+                exit(Customer."Post Code" + ' - ' + Customer.City);
+        end;
+    end;
+
+    local procedure GetCustomerCountry(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+        Customer: Record Customer;
+        CountryRegion: Record "Country/Region";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            if Customer.Get(SalesHeader."Sell-to Customer No.") then begin
+                if CountryRegion.Get(Customer."Country/Region Code") then
+                    exit(CountryRegion.Name);
+            end;
+        end;
+    end;
+
+    local procedure GetShippingAddress(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Ship-to Address" + ', ' + SalesHeader."Ship-to Address 2");
+        end;
+    end;
+
+    local procedure GetShippingName(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Ship-to Name");
+        end;
+    end;
+
+    local procedure GetShippingCity(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Ship-to Post Code" + ' - ' + SalesHeader."Ship-to City")
+        end;
+    end;
+
+    local procedure GetShippingPhone(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Ship-to Phone No.");
+        end;
+    end;
+
+    local procedure GetShippingCountry(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+        CountryRegion: Record "Country/Region";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            if CountryRegion.Get(SalesHeader."Ship-to Country/Region Code") then
+                exit(CountryRegion.Name);
+        end;
+    end;
+
+    local procedure GetBillingAddress(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Bill-to Address" + ', ' + SalesHeader."Bill-to Address 2");
+        end;
+    end;
+
+    local procedure GetBillingName(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Bill-to Name");
+        end;
+    end;
+
+    local procedure GetBillingCity(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            exit(SalesHeader."Bill-to Post Code" + ' - ' + SalesHeader."Bill-to City")
+        end;
+    end;
+
+    local procedure GetBillingCountry(var SalesHeader: Record "Sales Header"): Text
+    var
+        SalesHeaderRec: Record "Sales Header";
+        CountryRegion: Record "Country/Region";
+    begin
+        if SalesHeaderRec.Get(SalesHeader."Document Type", SalesHeader."No.") then begin
+            if CountryRegion.Get(SalesHeader."Bill-to Country/Region Code") then
+                exit(CountryRegion.Name);
         end;
     end;
 }
