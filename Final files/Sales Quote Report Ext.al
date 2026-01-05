@@ -21,12 +21,18 @@ reportextension 50102 SalesQuoteExt extends "Standard Sales - Quote"
             {
 
             }
+            column(GetWorkDescription; GetWorkDescription)
+            {
+
+            }
         }
         add(Line)
         {
             column(Currency_Code; "Currency Code")
             {
-
+            }
+            column(Line_No; GetLineNo(Line))
+            {
             }
         }
     }
@@ -55,5 +61,13 @@ reportextension 50102 SalesQuoteExt extends "Standard Sales - Quote"
             OrganicMolecule."Organic Molecule".CreateInStream(InStream, TextEncoding::UTF8);
             exit(TypeHelper.TryReadAsTextWithSepAndFieldErrMsg(InStream, TypeHelper.LFSeparator(), OrganicMolecule.FieldName("Organic Molecule")));
         end;
+    end;
+
+    local procedure GetLineNo(var SalesLine: Record "Sales Line"): Text
+    var
+        RecSalesLine: Record "Sales Line";
+    begin
+        if RecSalesLine.Get(SalesLine."Document Type", SalesLine."Document No.", SalesLine."Line No.") then
+            exit(RecSalesLine."No.");
     end;
 }
