@@ -11,7 +11,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-01-10T18:16:38.7510081Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-10T19:19:39.5924807Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -974,7 +974,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!VATRegistrationNo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!VAT_Registration_No_.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1730,6 +1730,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
@@ -1912,6 +1913,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
@@ -2101,6 +2103,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>Tan</Color>
                                   </Style>
                                 </TextRun>
@@ -3033,6 +3036,9 @@ TIe8nlg5dj2HAHrXrJ/Zv8ITMJLiTVr6YDIkvdRlmb82Jrf0b4T6N4fC/YTPCFGB+9Jz9c0AYvwx+AXh
         </Field>
         <Field Name="CompanyInfoCountryCode">
           <DataField>CompanyInfoCountryCode</DataField>
+        </Field>
+        <Field Name="VAT_Registration_No_">
+          <DataField>VAT_Registration_No_</DataField>
         </Field>
         <Field Name="Currency_Code_Header">
           <DataField>Currency_Code_Header</DataField>
