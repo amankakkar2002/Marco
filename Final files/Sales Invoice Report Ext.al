@@ -9,7 +9,7 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
             {
 
             }
-            column(Currency_Code_Header; "Currency Code")
+            column(Currency_Code_Header; GetCurrencyCode("Currency Code"))
             {
 
             }
@@ -326,5 +326,17 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
             if CountryRegion.Get(SalesHeader."Bill-to Country/Region Code") then
                 exit(CountryRegion.Name);
         end;
+    end;
+
+    local procedure GetCurrencyCode(CurrencyCode: Code[20]): Text
+    var
+        GLSetup: Record "General Ledger Setup";
+    begin
+        if CurrencyCode = '' then begin
+            GLSetup.Get();
+            exit(GLSetup."LCY Code");
+        end
+        else
+            exit(CurrencyCode);
     end;
 }

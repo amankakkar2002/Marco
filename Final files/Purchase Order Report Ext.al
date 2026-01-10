@@ -5,6 +5,10 @@ reportextension 50101 PurchaseOrderExt extends "Standard Purchase - Order"
     {
         add("Purchase Header")
         {
+            column(Currency_Code_Header; GetCurrencyCode("Currency Code"))
+            {
+
+            }
             column(CompanyInfoCountryCode; CompanyInfo."Country/Region Code")
             {
 
@@ -80,6 +84,18 @@ reportextension 50101 PurchaseOrderExt extends "Standard Purchase - Order"
                     exit(CountryRegion.Name);
             end;
         end;
+    end;
+
+    local procedure GetCurrencyCode(CurrencyCode: Code[20]): Text
+    var
+        GLSetup: Record "General Ledger Setup";
+    begin
+        if CurrencyCode = '' then begin
+            GLSetup.Get();
+            exit(GLSetup."LCY Code");
+        end
+        else
+            exit(CurrencyCode);
     end;
 
 }

@@ -11,7 +11,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-01-06T17:00:06.9812348Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-10T18:29:49.2669117Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -463,18 +463,6 @@
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
-                                <TextRun>
-                                  <Value xml:space="preserve"> </Value>
-                                  <Style>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>=Fields!Currency_Code.Value</Value>
-                                  <Style>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                  </Style>
-                                </TextRun>
                               </TextRuns>
                               <Style>
                                 <TextAlign>Right</TextAlign>
@@ -822,6 +810,22 @@
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
+                                <TextRun>
+                                  <Value xml:space="preserve"> </Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!Currency_Code_Header.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
+                                  </Style>
+                                </TextRun>
                               </TextRuns>
                               <Style>
                                 <TextAlign>Right</TextAlign>
@@ -970,6 +974,22 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Fields!TotalVATAmount.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value xml:space="preserve"> </Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!Currency_Code_Header.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -1130,6 +1150,24 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Fields!TotalAmountInclVAT.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
+                                    <Color>Tan</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value xml:space="preserve"> </Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
+                                    <Color>Tan</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!Currency_Code_Header.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -1527,7 +1565,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!No_PurchHeader.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!VendorInvoiceNo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontWeight>Normal</FontWeight>
                     </Style>
@@ -2907,6 +2945,9 @@ TIe8nlg5dj2HAHrXrJ/Zv8ITMJLiTVr6YDIkvdRlmb82Jrf0b4T6N4fC/YTPCFGB+9Jz9c0AYvwx+AXh
         </Field>
         <Field Name="ClosingText">
           <DataField>ClosingText</DataField>
+        </Field>
+        <Field Name="Currency_Code_Header">
+          <DataField>Currency_Code_Header</DataField>
         </Field>
         <Field Name="CompanyInfoCountryCode">
           <DataField>CompanyInfoCountryCode</DataField>

@@ -9,7 +9,7 @@ reportextension 50102 SalesQuoteExt extends "Standard Sales - Quote"
             {
 
             }
-            column(Currency_Code_Header; "Currency Code")
+            column(Currency_Code_Header; GetCurrencyCode("Currency Code"))
             {
 
             }
@@ -69,5 +69,17 @@ reportextension 50102 SalesQuoteExt extends "Standard Sales - Quote"
     begin
         if RecSalesLine.Get(SalesLine."Document Type", SalesLine."Document No.", SalesLine."Line No.") then
             exit(RecSalesLine."No.");
+    end;
+
+    local procedure GetCurrencyCode(CurrencyCode: Code[20]): Text
+    var
+        GLSetup: Record "General Ledger Setup";
+    begin
+        if CurrencyCode = '' then begin
+            GLSetup.Get();
+            exit(GLSetup."LCY Code");
+        end
+        else
+            exit(CurrencyCode);
     end;
 }

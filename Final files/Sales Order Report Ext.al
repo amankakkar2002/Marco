@@ -9,7 +9,7 @@ reportextension 50106 SalesOrderExt extends "Standard Sales - Order Conf."
             {
 
             }
-            column(Currency_Code_Header; "Currency Code")
+            column(Currency_Code_Header; GetCurrencyCode("Currency Code"))
             {
 
             }
@@ -74,6 +74,10 @@ reportextension 50106 SalesOrderExt extends "Standard Sales - Order Conf."
 
             }
             column(GetBillingCountry; GetBillingCountry(Header))
+            {
+
+            }
+            column(Ship_to_Contact; "Ship-to Contact")
             {
 
             }
@@ -256,5 +260,17 @@ reportextension 50106 SalesOrderExt extends "Standard Sales - Order Conf."
             if CountryRegion.Get(SalesHeader."Bill-to Country/Region Code") then
                 exit(CountryRegion.Name);
         end;
+    end;
+
+    local procedure GetCurrencyCode(CurrencyCode: Code[20]): Text
+    var
+        GLSetup: Record "General Ledger Setup";
+    begin
+        if CurrencyCode = '' then begin
+            GLSetup.Get();
+            exit(GLSetup."LCY Code");
+        end
+        else
+            exit(CurrencyCode);
     end;
 }
