@@ -34,6 +34,9 @@ reportextension 50102 SalesQuoteExt extends "Standard Sales - Quote"
             column(Line_No; GetLineNo(Line))
             {
             }
+            column(Line_Discount_Amount; "Line Discount Amount")
+            {
+            }
         }
     }
 

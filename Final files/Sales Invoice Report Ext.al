@@ -9,6 +9,10 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
             {
 
             }
+            column(VAT_Registration_No_; GetVATRegistrationNo(Header))
+            {
+
+            }
             column(Currency_Code_Header; GetCurrencyCode("Currency Code"))
             {
 
@@ -338,5 +342,17 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
         end
         else
             exit(CurrencyCode);
+    end;
+
+    local procedure GetVATRegistrationNo(var SalesHeader: Record "Sales Invoice Header"): Text
+    var
+        Customer: Record Customer;
+    begin
+        If Customer.Get(Header."Bill-to Customer No.") and (Customer."VAT Registration No." <> '') then
+            exit(Customer."VAT Registration No.")
+        else if Customer.Get(Header."Sell-to Customer No.") and (Customer."VAT Registration No." <> '') then
+            exit(Customer."VAT Registration No.")
+        else
+            exit(SalesHeader."VAT Registration No.");
     end;
 }

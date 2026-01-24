@@ -11,7 +11,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-01-10T18:17:00.5474611Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-24T20:31:05.3738693Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -732,6 +732,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
@@ -914,6 +915,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
@@ -1103,6 +1105,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>Tan</Color>
                                   </Style>
                                 </TextRun>
@@ -1555,7 +1558,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="+" &amp; First(Fields!SellToContactPhoneNo.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!SellToContactPhoneNo.Value, "DataSet_Result")</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2050,6 +2053,36 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="BuyFromAddress33">
+              <rd:DefaultName>BuyFromAddress31</rd:DefaultName>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!VAT_Registration_No_.Value, "DataSet_Result")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.68056in</Top>
+              <Left>6.00143in</Left>
+              <Height>0.25in</Height>
+              <Width>3in</Width>
+              <ZIndex>26</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -2446,6 +2479,9 @@ TIe8nlg5dj2HAHrXrJ/Zv8ITMJLiTVr6YDIkvdRlmb82Jrf0b4T6N4fC/YTPCFGB+9Jz9c0AYvwx+AXh
         </Field>
         <Field Name="CompanyInfoCountryCode">
           <DataField>CompanyInfoCountryCode</DataField>
+        </Field>
+        <Field Name="VAT_Registration_No_">
+          <DataField>VAT_Registration_No_</DataField>
         </Field>
         <Field Name="Currency_Code_Header">
           <DataField>Currency_Code_Header</DataField>

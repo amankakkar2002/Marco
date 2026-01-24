@@ -11,7 +11,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-01-10T18:16:10.1823551Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-24T20:25:13.2173839Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -1019,7 +1019,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tax Amount</Value>
+                                  <Value>Tax Amount (8.1%)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -2865,6 +2865,36 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="BuyFromAddress7">
+            <rd:DefaultName>BuyFromAddress4</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!VAT_Registration_No_.Value, "DataSet_Result")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.60757in</Top>
+            <Left>6.01375in</Left>
+            <Height>0.25in</Height>
+            <Width>2.97994in</Width>
+            <ZIndex>47</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>9.40043in</Height>
         <Style />
@@ -3827,6 +3857,9 @@ TIe8nlg5dj2HAHrXrJ/Zv8ITMJLiTVr6YDIkvdRlmb82Jrf0b4T6N4fC/YTPCFGB+9Jz9c0AYvwx+AXh
         </Field>
         <Field Name="CompanyInfoCountryCode">
           <DataField>CompanyInfoCountryCode</DataField>
+        </Field>
+        <Field Name="VAT_Registration_No_">
+          <DataField>VAT_Registration_No_</DataField>
         </Field>
         <Field Name="Currency_Code_Header">
           <DataField>Currency_Code_Header</DataField>
