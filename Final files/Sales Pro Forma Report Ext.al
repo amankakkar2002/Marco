@@ -68,6 +68,9 @@ reportextension 50104 SalesProFormaExt extends "Standard Sales - Pro Forma Inv"
             {
 
             }
+            column(Line_No_; "Line No.")
+            {
+            }
         }
         add(Totals)
         {
