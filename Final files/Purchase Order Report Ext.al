@@ -36,6 +36,10 @@ reportextension 50101 PurchaseOrderExt extends "Standard Purchase - Order"
             {
 
             }
+            column(Line_Discount_Amount; "Line Discount Amount")
+            {
+
+            }
         }
     }
 

@@ -104,6 +104,10 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
             {
 
             }
+            column(Line_Discount_Amount; "Line Discount Amount")
+            {
+
+            }
         }
         add(Totals)
         {

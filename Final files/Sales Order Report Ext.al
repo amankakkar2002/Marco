@@ -101,13 +101,14 @@ reportextension 50106 SalesOrderExt extends "Standard Sales - Order Conf."
 
             }
         }
+        add(Line)
+        {
+            column(Line_Discount_Amount; "Line Discount Amount")
+            {
+
+            }
+        }
     }
-
-    var
-        FormatAddr: Codeunit "Format Address";
-        ShipToAddr: array[8] of Text[100];
-
-
     procedure GetTermsAndConditions(var SalesHeader: Record "Sales Header"): Text
     var
         TypeHelper: Codeunit "Type Helper";
