@@ -9,33 +9,15 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
     {
         add(Line)
         {
-            column(Quantity; Quantity)
-            {
-
-            }
-            column(Unit_Price; "Unit Price")
-            {
-
-            }
-            column(VAT__; GetVAT(Line))
-            {
-
-            }
-            column(Line_Discount__; "Line Discount %")
-            {
-
-            }
-            column(Line_Amount; "Line Amount")
-            {
-
-            }
+            column(Quantity; Quantity) { }
+            column(Unit_Price; "Unit Price") { }
+            column(VAT__; GetVAT(Line)) { }
+            column(Line_Discount__; "Line Discount %") { }
+            column(Line_Amount; "Line Amount") { }
         }
         add(Header)
         {
-            column(Currency_Code; LocalGetCurrencyCode("Currency Code"))
-            {
-
-            }
+            column(Currency_Code; LocalGetCurrencyCode("Currency Code")) { }
         }
 
         addbefore(Line)
@@ -50,7 +32,6 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
                 column(ReferenceLbl; ReferenceLbl) { }
                 column(AdditionalInformationLbl; AdditionalInformationLbl) { }
                 column(CurrencyLbl; CurrencyLbl) { }
-                column(AmountLbl; AmountLbl) { }
                 column(ReceiptLbl; ReceiptLbl) { }
                 column(AcceptancePointLbl; AcceptancePointLbl) { }
                 column(PayableByLbl; PayableByLbl) { }
@@ -69,6 +50,36 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
                 column(AltProcValue2Text; "Alt. Procedure Value 2") { }
                 column(CompanyInfoPicture; CompanyInfo.Picture) { }
                 column(GlobalVAT; FormattedVATPct) { }
+                column(BilledToLbl; BilledToLblTxt) { }
+                column(FromLbl; FromLblTxt) { }
+                column(InvoiceLbl; InvoiceLblTxt) { }
+                column(NoLbl; NoLblTxt) { }
+
+                column(InvoiceDateLbl; InvoiceDateLblTxt) { }
+                column(DueDateLbl; DueDateLblTxt) { }
+                column(PaymentTermsLbl; PaymentTermsLblTxt) { }
+                column(ExternalRefLbl; ExternalRefLblTxt) { }
+                column(DescriptionLbl; DescriptionLblTxt) { }
+                column(QtyLbl; QtyLblTxt) { }
+                column(UnitPriceLbl; UnitPriceLblTxt) { }
+                column(VATLbl; VATLblTxt) { }
+
+                column(DiscountLbl; DiscountLblTxt) { }
+                column(AmountLbl; AmountLblTxt) { }
+                column(SubtotalExclVATLbl; SubtotalExclVATLblTxt) { }
+                column(TotalLbl; TotalLblTxt) { }
+                column(HowToPayLbl; HowToPayLblTxt) { }
+                column(PaymentDetailsLbl; PaymentDetailsLblTxt) { }
+                column(AmountDueLbl; AmountDueLblTxt) { }
+                column(BankDetailsLbl; BankDetailsLblTxt) { }
+                column(BankLbl; BankLblTxt) { }
+                column(IBANLbl; IBANLblTxt) { }
+                column(AccountNoLbl; AccountNoLblTxt) { }
+                column(BICSwiftLbl; BICSwiftLblTxt) { }
+                column(BranchCodeLbl; BranchCodeLblTxt) { }
+                column(VATNoLbl; VATNoLblTxt) { }
+                column(QRDomiciledMsg; QRDomiciledMsgTxt) { }
+
 
                 trigger OnPreDataItem()
                 begin
@@ -85,6 +96,7 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
                 var
                     Language: Codeunit Language;
                 begin
+                    setReportCaptions("Language Code");
                     CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
                     CurrReport.FormatRegion := Language.GetFormatRegionOrDefault("Format Region");
                     PrepareForPrint();
@@ -125,6 +137,33 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
         NotAllPrintedMsg: Label 'Not all documents were printed QR-Bill with the specified filters. Only CHF and EUR currency is allowed.';
         QRBufferMgt: Codeunit "QR Buffer Mgt.";
         GlobalVAT: Decimal;
+        BilledToLblTxt: Text;
+        FromLblTxt: Text;
+        InvoiceLblTxt: Text;
+        NoLblTxt: Text;
+        InvoiceDateLblTxt: Text;
+        DueDateLblTxt: Text;
+        PaymentTermsLblTxt: Text;
+        ExternalRefLblTxt: Text;
+        DescriptionLblTxt: Text;
+        QtyLblTxt: Text;
+        UnitPriceLblTxt: Text;
+        VATLblTxt: Text;
+        DiscountLblTxt: Text;
+        AmountLblTxt: Text;
+        SubtotalExclVATLblTxt: Text;
+        TotalLblTxt: Text;
+        HowToPayLblTxt: Text;
+        PaymentDetailsLblTxt: Text;
+        AmountDueLblTxt: Text;
+        BankDetailsLblTxt: Text;
+        BankLblTxt: Text;
+        IBANLblTxt: Text;
+        AccountNoLblTxt: Text;
+        BICSwiftLblTxt: Text;
+        BranchCodeLblTxt: Text;
+        VATNoLblTxt: Text;
+        QRDomiciledMsgTxt: Text;
 
     trigger OnPreReport()
     begin
@@ -208,5 +247,101 @@ reportextension 50105 SalesInvoiceExt extends "Standard Sales - Invoice"
             GlobalVAT := Line."VAT %";
 
         exit(Line."VAT %");
+    end;
+
+    local procedure SetReportCaptions(LanguageCode: Code[10])
+    begin
+        // Default (English)
+        BilledToLblTxt := 'BILLED TO';
+        FromLblTxt := 'FROM';
+        InvoiceLblTxt := 'Invoice';
+        NoLblTxt := 'No.';
+        InvoiceDateLblTxt := 'INVOICE DATE';
+        DueDateLblTxt := 'DUE DATE';
+        PaymentTermsLblTxt := 'PAYMENT TERMS';
+        ExternalRefLblTxt := 'EXTERNAL REF.';
+        DescriptionLblTxt := 'DESCRIPTION';
+        QtyLblTxt := 'QTY';
+        UnitPriceLblTxt := 'UNIT PRICE';
+        VATLblTxt := 'VAT';
+        DiscountLblTxt := 'DISCOUNT';
+        AmountLblTxt := 'AMOUNT';
+        SubtotalExclVATLblTxt := 'Subtotal excl. VAT';
+        TotalLblTxt := 'Total';
+        HowToPayLblTxt := 'HOW TO PAY';
+        PaymentDetailsLblTxt := 'Payment Details';
+        AmountDueLblTxt := 'AMOUNT DUE';
+        BankDetailsLblTxt := 'BANK DETAILS';
+        BankLblTxt := 'Bank';
+        IBANLblTxt := 'IBAN';
+        AccountNoLblTxt := 'Account No.';
+        BICSwiftLblTxt := 'BIC/SWIFT';
+        BranchCodeLblTxt := 'Branch Code';
+        VATNoLblTxt := 'VAT No.';
+        QRDomiciledMsgTxt := 'QR-bill payments can only be made through a domiciled in Switzerland.';
+
+        case LanguageCode of
+            'DES':
+                begin
+                    BilledToLblTxt := 'RECHNUNG AN';
+                    FromLblTxt := 'VON';
+                    InvoiceLblTxt := 'Rechnung';
+                    NoLblTxt := 'Nr.';
+                    InvoiceDateLblTxt := 'RECHNUNGSDATUM';
+                    DueDateLblTxt := 'FÄLLIGKEITSDATUM';
+                    PaymentTermsLblTxt := 'ZAHLUNGSBEDINGUNGEN';
+                    ExternalRefLblTxt := 'EXTERNE REF.';
+                    DescriptionLblTxt := 'BESCHREIBUNG';
+                    QtyLblTxt := 'MENGE';
+                    UnitPriceLblTxt := 'EINZELPREIS';
+                    VATLblTxt := 'MWST';
+                    DiscountLblTxt := 'RABATT';
+                    AmountLblTxt := 'BETRAG';
+                    SubtotalExclVATLblTxt := 'Zwischensumme exkl. MWST';
+                    TotalLblTxt := 'Total';
+                    HowToPayLblTxt := 'ZAHLUNGSINFORMATIONEN';
+                    PaymentDetailsLblTxt := 'Zahlungsdetails';
+                    AmountDueLblTxt := 'FÄLLIGER BETRAG';
+                    BankDetailsLblTxt := 'BANKVERBINDUNG';
+                    BankLblTxt := 'Bank';
+                    IBANLblTxt := 'IBAN';
+                    AccountNoLblTxt := 'Kontonr.';
+                    BICSwiftLblTxt := 'BIC/SWIFT';
+                    BranchCodeLblTxt := 'Bankleitzahl';
+                    VATNoLblTxt := 'MWST-Nr.';
+                    QRDomiciledMsgTxt := 'QR-Rechnungen können nur über ein in der Schweiz domiziliertes Finanzinstitut bezahlt werden.';
+                end;
+
+            'FRS':
+                begin
+                    BilledToLblTxt := 'FACTURE À';
+                    FromLblTxt := 'DE';
+                    InvoiceLblTxt := 'Facture';
+                    NoLblTxt := 'N°';
+                    InvoiceDateLblTxt := 'DATE DE FACTURE';
+                    DueDateLblTxt := 'DATE D''ÉCHÉANCE';
+                    PaymentTermsLblTxt := 'CONDITIONS DE PAIEMENT';
+                    ExternalRefLblTxt := 'RÉF. EXTERNE';
+                    DescriptionLblTxt := 'DESCRIPTION';
+                    QtyLblTxt := 'QTÉ';
+                    UnitPriceLblTxt := 'PRIX UNITAIRE';
+                    VATLblTxt := 'TVA';
+                    DiscountLblTxt := 'REMISE';
+                    AmountLblTxt := 'MONTANT';
+                    SubtotalExclVATLblTxt := 'Sous-total hors TVA';
+                    TotalLblTxt := 'Total';
+                    HowToPayLblTxt := 'COMMENT PAYER';
+                    PaymentDetailsLblTxt := 'Détails du paiement';
+                    AmountDueLblTxt := 'MONTANT DÛ';
+                    BankDetailsLblTxt := 'COORDONNÉES BANCAIRES';
+                    BankLblTxt := 'Banque';
+                    IBANLblTxt := 'IBAN';
+                    AccountNoLblTxt := 'N° de compte';
+                    BICSwiftLblTxt := 'BIC/SWIFT';
+                    BranchCodeLblTxt := 'Code agence';
+                    VATNoLblTxt := 'N° TVA';
+                    QRDomiciledMsgTxt := 'Les paiements par QR-facture ne peuvent être effectués que par un établissement domicilié en Suisse.';
+                end;
+        end;
     end;
 }
